@@ -1,6 +1,7 @@
 <?php //file php
 
 use App\Http\Controllers\ItemController; //menggunakan ItemController agar bisa dipakai dalam route
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route; //memuat class Route untuk mendefinisikan rute aplikasi
 
@@ -25,13 +26,9 @@ Route::get('/world', function () {
     return 'World';
 });
 
-Route::get('/', function () {
-    return 'Selamat Datang';
-});
+Route::get('/', [PageController::class, 'index']);
 
-Route::get('/about', function () {
-    return 'NIM: 2341760072, Nama: Niriza Lailaumi Hidayat';
-});
+Route::get('/about', [PageController::class, 'about']);
 
 Route::get('/user/{name}', function ($name) {
     return 'Nama saya ' .$name;
@@ -41,9 +38,7 @@ Route::get('/posts/{post}/comments/{comment}', function ($postId, $commentId) {
     return 'Pos ke-'.$postId." Komentar ke-: ".$commentId;
 });
 
-Route::get('/articles/{id}', function ($id) {
-    return 'Halaman Artikel dengan ID '.$id;
-});
+Route::get('/articles/{id}', [PageController::class, 'articles']);
 
 Route::get('/user/{name?}', function ($name = 'John') {
     return 'Nama saya ' .$name;

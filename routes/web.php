@@ -1,6 +1,7 @@
 <?php //file php
 
 use App\Http\Controllers\ItemController; //menggunakan ItemController agar bisa dipakai dalam route
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route; //memuat class Route untuk mendefinisikan rute aplikasi
 
 /*
@@ -18,9 +19,7 @@ Route::get('/', function () { //mendaftarkan route GET / (halaman utama)
     return view('welcome'); //menampilkan tampilan welcome.blade.php
 });
 
-Route::get('/hello', function () {
-    return 'Hello World';
-});
+Route::get('/hello', [WelcomeController::class,'hello']);
 
 Route::get('/world', function () {
     return 'World';

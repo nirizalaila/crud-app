@@ -6,6 +6,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutControler;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\PhotoController;
 use Illuminate\Support\Facades\Route; //memuat class Route untuk mendefinisikan rute aplikasi
 
 /*
@@ -51,4 +52,14 @@ Route::get('/', HomeController::class);
 Route::get('/about', AboutControler::class);
 
 Route::get('/articles/{id}', ArticleController::class);
+
+Route::resource('photos', PhotoController::class);
+
+Route::resource('photos', PhotoController::class)
+->only([ 'index', 'show']);
+
+Route::resource('photos', PhotoController::class)
+->except(['create', 'store', 'update', 'destroy'
+]);
+   
 Route::resource('items', ItemController::class); //mendaftarkan semua route CRUD (index, create, store, show, edit, update, destroy) untuk ItemController, menghubungkan endpoint /items dengan metode yang ada di ItemController

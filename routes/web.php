@@ -3,6 +3,9 @@
 use App\Http\Controllers\ItemController; //menggunakan ItemController agar bisa dipakai dalam route
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutControler;
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route; //memuat class Route untuk mendefinisikan rute aplikasi
 
 /*
@@ -43,4 +46,9 @@ Route::get('/articles/{id}', [PageController::class, 'articles']);
 Route::get('/user/{name?}', function ($name = 'John') {
     return 'Nama saya ' .$name;
 });
+Route::get('/', HomeController::class);
+
+Route::get('/about', AboutControler::class);
+
+Route::get('/articles/{id}', ArticleController::class);
 Route::resource('items', ItemController::class); //mendaftarkan semua route CRUD (index, create, store, show, edit, update, destroy) untuk ItemController, menghubungkan endpoint /items dengan metode yang ada di ItemController

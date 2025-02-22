@@ -62,4 +62,8 @@ Route::resource('photos', PhotoController::class)
 ->except(['create', 'store', 'update', 'destroy'
 ]);
    
+Route::get('/greeting', function () {
+    return view('hello', ['name' => 'Niriza']);
+});
+
 Route::resource('items', ItemController::class); //mendaftarkan semua route CRUD (index, create, store, show, edit, update, destroy) untuk ItemController, menghubungkan endpoint /items dengan metode yang ada di ItemController

@@ -63,7 +63,7 @@ Route::resource('photos', PhotoController::class)
 ]);
    
 Route::get('/greeting', function () {
-    return view('hello', ['name' => 'Niriza']);
+    return view('blog.hello', ['name' => 'Niriza']);
 });
 
 Route::resource('items', ItemController::class); //mendaftarkan semua route CRUD (index, create, store, show, edit, update, destroy) untuk ItemController, menghubungkan endpoint /items dengan metode yang ada di ItemController
